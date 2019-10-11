@@ -3,6 +3,7 @@ package com.classrooms.controller;
 import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ import com.classrooms.model.ProfesseurResult;
 import com.classrooms.service.EcoleService;
 
 @RestController
+@CrossOrigin("https://yussufschool.herokuapp.com")
 public class EcoleController {
 
 	@Autowired

@@ -12,6 +12,6 @@ import com.classrooms.model.Classe;
 @Repository
 public interface ClasseDao   extends JpaRepository<Classe, Integer>{
 	
-	Classe findByNom(String name );
+
 
 }

@@ -28,36 +28,17 @@ public class Classe implements Serializable {
 	@GeneratedValue
 	private int id;
 
-	private String nom;
+	private String classeName;
 
-	@JsonIgnore
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "classes", cascade = CascadeType.PERSIST)
-	private Collection<MatiereProfesseur> mat_prof = new ArrayList<MatiereProfesseur>();
+	public Classe(int id, String classeName) {
+		super();
+		this.id = id;
+		this.classeName = classeName;
+	}
 
-	//@LazyCollection(LazyCollectionOption.FALSE)
-	//@OneToMany(cascade = { CascadeType.PERSIST,CascadeType.MERGE})
-	 @ManyToMany(cascade = { CascadeType.PERSIST,CascadeType.MERGE})
-	 @JoinTable(
-              name="ClasseEleves",
-              joinColumns={@JoinColumn(name="classe_id", referencedColumnName="id")},
-              inverseJoinColumns={@JoinColumn(name="eleves_elv_id", referencedColumnName="elv_id")})
-	private Set<Eleve> eleves = new HashSet<Eleve>();
 	public Classe() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-	public Classe(String nom) {
-		super();
-		this.nom = nom;
-	}
-
-	public Collection<MatiereProfesseur> getMat_prof() {
-		return mat_prof;
-	}
-
-	public void setMat_prof(Collection<MatiereProfesseur> mat_prof) {
-		this.mat_prof = mat_prof;
 	}
 
 	public int getId() {
@@ -68,35 +49,17 @@ public class Classe implements Serializable {
 		this.id = id;
 	}
 
-	public String getNom() {
-		return nom;
+	public String getClasseName() {
+		return classeName;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setClasseName(String classeName) {
+		this.classeName = classeName;
 	}
 
-	@Override
-	public String toString() {
-		return "Classe [id=" + id + ", nom=" + nom + ", mat_prof=" + mat_prof + "]";
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-
-	
-	public Set<Eleve> getEleves() {
-		return eleves;
-	}
-
-	public void setEleves(Set<Eleve> eleves) {
-		this.eleves = eleves;
-	}
-
-	@PreRemove
-	private void removeMatProf() {
-	    for (MatiereProfesseur mp : mat_prof) {
-	    	mp.getClasses().remove(this);
-	     
-	    }
-	}	
 
 }

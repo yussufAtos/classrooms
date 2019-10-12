@@ -18,7 +18,7 @@ public class ClassroomsApplication implements CommandLineRunner{
 	}
 	@Override
 	public void run(String... agr0) {
-		classeDao.save(new Classe("first classroom"));
+		//classeDao.save(new Classe("first classroom"));
 	}
 
 }

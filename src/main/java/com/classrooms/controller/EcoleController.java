@@ -30,6 +30,7 @@ public class EcoleController {
 	
 	@GetMapping(value = "/classes")
 	public List<Classe> getRooms() {
+		System.out.println("getRooms is called");
 		return ecoleService.findAllRooms();
 	}
 	

@@ -37,7 +37,7 @@ public class EcoleController {
 
 	@PostMapping(value = "/classe")
 	public void saveClassroom(@RequestBody Classe classe) {	
-		
+		System.out.println("saveClassroom is called");
 		ecoleService.savClassroom(classe);
 	}
 	

@@ -29,6 +29,9 @@ public class EcoleServiceImpl implements EcoleService {
 	public List<Classe> findAllRooms() {
 		return classeDao.findAll();
 	}
+	public void savClassroom(Classe classe) {
+		classeDao.saveAndFlush(classe);
+	}
 
 
 

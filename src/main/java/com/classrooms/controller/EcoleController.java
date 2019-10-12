@@ -3,6 +3,7 @@ package com.classrooms.controller;
 import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.classrooms.model.Classe;
 import com.classrooms.service.EcoleService;
 
 @RestController
+//@CrossOrigin(origins = "http://domain2.com", maxAge = 3600)
 public class EcoleController {
 
 	@Autowired
@@ -26,10 +28,17 @@ public class EcoleController {
 	@Autowired
 	private ClasseDao classeDao;
 	
-	@GetMapping(value = "/rooms")
+	@GetMapping(value = "/classes")
 	public List<Classe> getRooms() {
 		return ecoleService.findAllRooms();
 	}
+	
+
+	@PostMapping(value = "/classe")
+	public void saveClassroom(@RequestBody Classe classe) {	
+		ecoleService.savClassroom(classe);
+	}
+	
 	
 	
 

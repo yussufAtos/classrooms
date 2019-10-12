@@ -11,8 +11,7 @@ import com.classrooms.model.Classe;
 
 public interface EcoleService {
 	List<Classe> findAllRooms();
-
-    
+	void  savClassroom(Classe classe);
     
 	
 

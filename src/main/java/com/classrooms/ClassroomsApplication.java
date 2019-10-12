@@ -9,9 +9,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.classrooms.dao.RoleDao;
 import com.classrooms.dao.UserDao;
+import com.classrooms.model.Classe;
 import com.classrooms.model.Role;
 import com.classrooms.model.UserApp;
 import com.classrooms.service.UserService;
+import com.classrooms.dao.ClasseDao;
 
 @SpringBootApplication
 public class ClassroomsApplication implements CommandLineRunner{
@@ -23,6 +25,8 @@ public class ClassroomsApplication implements CommandLineRunner{
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private ClasseDao classeDao;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -45,7 +49,7 @@ public class ClassroomsApplication implements CommandLineRunner{
 		userApp.getRoles().add(r1);
 		userApp.getRoles().add(r2);
 		userService.save(userApp);	
-		
+		classeDao.save(new Classe("first classroom"));
 		
 	}
 	

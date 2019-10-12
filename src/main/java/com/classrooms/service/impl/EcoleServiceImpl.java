@@ -30,7 +30,7 @@ public class EcoleServiceImpl implements EcoleService {
 		return classeDao.findAll();
 	}
 	public void savClassroom(Classe classe) {
-		classeDao.saveAndFlush(classe);
+		classeDao.save(classe);
 	}
 
 

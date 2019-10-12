@@ -17,6 +17,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PreRemove;
+import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -27,8 +28,9 @@ public class Classe implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	//@GeneratedValue
-	@GeneratedValue (strategy = GenerationType.IDENTITY) 
-
+	//@GeneratedValue (strategy = GenerationType.IDENTITY) 
+	@SequenceGenerator(name="seq-gen",sequenceName="MY_SEQ_GEN", initialValue=205, allocationSize=12)
+	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq-gen")
 	private int id;
 
 	private String classeName;

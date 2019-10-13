@@ -19,7 +19,7 @@ import com.classrooms.model.Classe;
 import com.classrooms.service.EcoleService;
 
 @RestController
-//@CrossOrigin(origins = "http://domain2.com", maxAge = 3600)
+@CrossOrigin("https://yussufschool.herokuapp.com")
 public class EcoleController {
 
 	@Autowired

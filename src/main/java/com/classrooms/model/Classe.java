@@ -18,12 +18,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PreRemove;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name= "classe")
 public class Classe implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id

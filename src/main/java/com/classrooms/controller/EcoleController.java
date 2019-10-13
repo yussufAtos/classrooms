@@ -29,18 +29,18 @@ public class EcoleController {
 	private ClasseDao classeDao;
 	
 	@GetMapping(value = "/classes")
-	public String getRooms() {
+	public List<Classe> getRooms() {
 		//System.out.println("getRooms is called");
-		//return ecoleService.findAllRooms();
-		return "getRooms Helloo world";
+		return ecoleService.findAllRooms();
+		//return "getRooms Helloo world";
 	}
 	
 
 	@PostMapping(value = "/classe")
-	public String saveClassroom() {	
+	public void saveClassroom(@RequestBody Classe classe) {	
 		//System.out.println("saveClassroom is called");
-		//ecoleService.savClassroom(classe);
-	return "saveClassroom Helloo world";
+     ecoleService.savClassroom(classe);
+
 	}
 	
 	

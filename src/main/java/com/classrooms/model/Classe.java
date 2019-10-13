@@ -24,13 +24,13 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-//@Entity
-//@Table(name= "classe")
+@Entity
+@Table(name= "classe")
 public class Classe implements Serializable {
 	private static final long serialVersionUID = 1L;
-	//@Id
+	@Id
 	//@GeneratedValue
-	//@GeneratedValue (strategy = GenerationType.AUTO) 
+@GeneratedValue (strategy = GenerationType.AUTO) 
 //	@SequenceGenerator(name="seq-gen",sequenceName="MY_SEQ_GEN", initialValue=205, allocationSize=12)
 //	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq-gen")
 	private int id;

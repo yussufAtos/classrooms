@@ -26,9 +26,12 @@ public class EcoleServiceImpl implements EcoleService {
 	private ClasseDao classeDao;
 	
 	@Override
+	@Transactional
 	public List<Classe> findAllRooms() {
 		return classeDao.findAll();
 	}
+	@Transactional
+	@Override
 	public void savClassroom(Classe classe) {
 		classeDao.save(classe);
 	}

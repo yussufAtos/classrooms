@@ -15,10 +15,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 //@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
-	@Autowired
-	private UserDetailsService userDetailsService;
-	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder ;
+//	@Autowired
+//	private UserDetailsService userDetailsService;
+//	@Autowired
+//	private BCryptPasswordEncoder bCryptPasswordEncoder ;
 	
 	  @Override
 	    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
@@ -26,8 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	/*	  auth.inMemoryAuthentication().withUser("ali").password("ali").roles("user")
 		  .and().withUser("youssef").password("youssef").roles("admin","user");*/
 		  
-		  auth.userDetailsService(userDetailsService)
-          .passwordEncoder(bCryptPasswordEncoder);
+//		  auth.userDetailsService(userDetailsService)
+//          .passwordEncoder(bCryptPasswordEncoder);
 		  
 	    }
 	
@@ -40,9 +40,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	        //http.authorizeRequests().antMatchers(HttpMethod.GET,"/classes").hasAuthority("admin");
 	        http.authorizeRequests().antMatchers(HttpMethod.GET,"/classes").permitAll();
 	        http.authorizeRequests().antMatchers(HttpMethod.POST,"/classe").permitAll();
-	        http.authorizeRequests().antMatchers(HttpMethod.POST,"/upload").permitAll();
-	        http.authorizeRequests().antMatchers(HttpMethod.GET,"/rooms").hasAuthority("admin");
-	        http.authorizeRequests().anyRequest().authenticated();
+//	        http.authorizeRequests().antMatchers(HttpMethod.POST,"/upload").permitAll();
+//	        http.authorizeRequests().antMatchers(HttpMethod.GET,"/rooms").hasAuthority("admin");
+	       // http.authorizeRequests().anyRequest().authenticated();
 //	        http .addFilter(new JwtAuthenticationFilter(authenticationManager()));
 	//        http.addFilterBefore(new JwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
 	   

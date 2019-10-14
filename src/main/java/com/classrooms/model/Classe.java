@@ -30,7 +30,7 @@ public class Classe implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	//@GeneratedValue
-@GeneratedValue (strategy = GenerationType.AUTO) 
+   @GeneratedValue (strategy = GenerationType.AUTO) 
 //	@SequenceGenerator(name="seq-gen",sequenceName="MY_SEQ_GEN", initialValue=205, allocationSize=12)
 //	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq-gen")
 	private int id;

@@ -39,12 +39,12 @@ public class ClassroomsApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... agr0) {
-		UserApp userApp = userDao.save(new UserApp("youssef", "youssef", 25));
-		Role r1 = new Role("admin");
-		Role r2 = new Role("user");
-		userApp.getRoles().add(r1);
-		userApp.getRoles().add(r2);
-		userService.save(userApp);
+//		UserApp userApp = userDao.save(new UserApp("youssef", "youssef", 25));
+//		Role r1 = new Role("admin");
+//		Role r2 = new Role("user");
+//		userApp.getRoles().add(r1);
+//		userApp.getRoles().add(r2);
+//		userService.save(userApp);
 	}
 
 }

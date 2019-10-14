@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import com.classrooms.dao.ClasseDao;
+import com.classrooms.dao.UserDao;
 import com.classrooms.model.Classe;
-
+import com.classrooms.model.Role;
+import com.classrooms.model.UserApp;
 import com.classrooms.service.EcoleService;
+import com.classrooms.service.UserService;
 
 @RestController
 //@CrossOrigin("https://yussufschool.herokuapp.com")
@@ -27,6 +30,12 @@ public class EcoleController {
 
 	@Autowired
 	private ClasseDao classeDao;
+	
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private UserDao userDao;
 	
 	@GetMapping(value = "/classes")
 	public List<Classe> getRooms() {
@@ -43,7 +52,16 @@ public class EcoleController {
 
 	}
 	
-	
+	@PostMapping(value = "/create")
+	public void createUser() {	
+		UserApp userApp = new UserApp("ali", "ali", 25);
+		Role r1 = new Role("admin");
+		Role r2 = new Role("user");
+		userApp.getRoles().add(r1);
+		userApp.getRoles().add(r2);
+		userService.save(userApp);
+
+	}
 	
 
 

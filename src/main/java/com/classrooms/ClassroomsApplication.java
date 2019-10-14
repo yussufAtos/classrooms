@@ -30,6 +30,7 @@ public class ClassroomsApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ClassroomsApplication.class, args);
+		
 	}
 
 	@Bean

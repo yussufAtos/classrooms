@@ -38,13 +38,13 @@ public class ClassroomsApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... agr0) {
-		String hashPwd = bCryptPasswordEncoder.encode("youssef");
-		UserApp userApp = userDao.save(new UserApp("youssef", hashPwd, 25));
-		Role r1 = new Role("admin");
-		Role r2 = new Role("user");
-		userApp.getRoles().add(r1);
-		userApp.getRoles().add(r2);
-		userService.save(userApp);
+//		String hashPwd = bCryptPasswordEncoder.encode("youssef");
+//		UserApp userApp = userDao.save(new UserApp("youssef", hashPwd, 25));
+//		Role r1 = new Role("admin");
+//		Role r2 = new Role("user");
+//		userApp.getRoles().add(r1);
+//		userApp.getRoles().add(r2);
+//		userService.save(userApp);
 	}
 
 }

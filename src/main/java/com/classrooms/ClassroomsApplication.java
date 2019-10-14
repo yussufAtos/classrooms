@@ -17,10 +17,10 @@ import com.classrooms.service.UserService;
 public class ClassroomsApplication implements CommandLineRunner {
 	@Autowired
 	private UserDao userDao;
-	
+
 	@Autowired
 	private RoleDao roleDao;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -38,9 +38,8 @@ public class ClassroomsApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... agr0) {
-
-		UserApp userApp = userDao.save(new UserApp("youssef", "youssef", 25));
 		String hashPwd = bCryptPasswordEncoder.encode("youssef");
+		UserApp userApp = userDao.save(new UserApp("youssef", hashPwd, 25));
 		Role r1 = new Role("admin");
 		Role r2 = new Role("user");
 		userApp.getRoles().add(r1);

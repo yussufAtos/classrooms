@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 		System.out.println("****loadUserByUsername***");
 		System.out.println("  loadUserByUsername : " + userName);
 		UserApp user = userDao.findByUsername(userName);
-
+		System.out.println("  loadUserByUsername user: " + user);
 		if (user == null) {
 			throw new UsernameNotFoundException("Invalid username or password.");
 			// throw exception(USER, ENTITY_NOT_FOUND, userName);

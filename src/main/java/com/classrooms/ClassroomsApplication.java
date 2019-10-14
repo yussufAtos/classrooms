@@ -13,6 +13,7 @@ import com.classrooms.model.Role;
 import com.classrooms.model.UserApp;
 import com.classrooms.service.UserService;
 
+
 @SpringBootApplication
 public class ClassroomsApplication implements CommandLineRunner {
 	@Autowired
@@ -38,13 +39,12 @@ public class ClassroomsApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... agr0) {
-		String hashPwd = bCryptPasswordEncoder.encode("youssef");
-		UserApp userApp = userDao.save(new UserApp("youssef", hashPwd, 25));
-		Role r1 = new Role("admin");
-		Role r2 = new Role("user");
-		userApp.getRoles().add(r1);
-		userApp.getRoles().add(r2);
-		userService.save(userApp);
+//		UserApp userApp = userDao.save(new UserApp("youssef", "youssef", 25));
+//		Role r1 = new Role("admin");
+//		Role r2 = new Role("user");
+//		userApp.getRoles().add(r1);
+//		userApp.getRoles().add(r2);
+//		userService.save(userApp);
 	}
 
 }

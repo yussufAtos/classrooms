@@ -25,48 +25,53 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws IOException, ServletException {
 
-		/*
-		 * response.addHeader("Access-Control-Allow-Origin", "*");
-		 * response.addHeader("Access-Control-Allow-Header", "Origin", "Accept");
-		 */
-
-		/*
-		 * response.setHeader("Access-Control-Allow-Origin", "*");
-		 * response.setHeader("Access-Control-Allow-Methods",
-		 * "POST, GET, OPTIONS, DELETE, PUT");
-		 * response.setHeader("Access-Control-Max-Age", "3600"); response.setHeader(
-		 * "Access-Control-Allow-Headers","x-requested-with, authorization, x-auth-token, origin, content-type, accept"
-		 * );
-		 */
-		System.out.println("****JwtAuthorizationFilter doFilterInternal******");
-		String jwt = request.getHeader(JwtProperties.HEADER_STRING);
-		System.out.println("doFilterInternal jwt : "+jwt);
-
-		if (jwt == null) {
-			filterChain.doFilter(request, response);
-			System.out.println("jwt is null : ");
-			return;
-		}
-		Claims claims = Jwts.parser().setSigningKey(JwtProperties.SECRET)
-				.parseClaimsJws(jwt.replace(JwtProperties.TOKEN_PREFIX, ""))
-
-				.getBody();
 		
-		System.out.println("doFilterInternal claims : "+claims);
-		System.out.println("doFilterInternal claims roles : "+claims.get("roles"));
-		String username = claims.getSubject();
-		ArrayList<Map<String, String>> roles = (ArrayList<Map<String, String>>) claims.get("roles");
-		Collection<GrantedAuthority> autorities = new ArrayList<>();
+		      response.addHeader("Access-Control-Allow-Origin", "*");
+		      response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+		      response.addHeader("Access-Control-Max-Age", "3600");
+		      response.addHeader("Access-Control-Allow-Headers","Origin ,Accept,X-requested-with,Content-Type" +"Access-Control-Request-Method,"
+		      +"Access-Control-Request-Headers,"+"Authorization" );  
+		      response.addHeader("Access-control-expose-headers","Access-Control-Allow-Origin,"+"Access-Control-Credentials,Authorization");
+		
+		   if (request.getMethod().equals("OPTIONS")) {
+		          response.setStatus(HttpServletResponse.SC_OK);
+		      } else {
+		  		
+		  		System.out.println("****JwtAuthorizationFilter doFilterInternal******");
+		  		String jwt = request.getHeader(JwtProperties.HEADER_STRING);
+		  		System.out.println("doFilterInternal jwt : "+jwt);
+		  		if (jwt == null) {
+		  			filterChain.doFilter(request, response);
+		  			System.out.println("jwt is null : ");
+		  			return;
+		  		}
+		  		Claims claims = Jwts.parser().setSigningKey(JwtProperties.SECRET)
+		  				.parseClaimsJws(jwt.replace(JwtProperties.TOKEN_PREFIX, ""))
 
-		roles.forEach(r -> {
-			autorities.add(new SimpleGrantedAuthority(r.get("authority")));
-		});
+		  				.getBody();
+		  		
+		  		System.out.println("doFilterInternal claims : "+claims);
+		  		System.out.println("doFilterInternal claims roles : "+claims.get("roles"));
+		  		String username = claims.getSubject();
+		  		ArrayList<Map<String, String>> roles = (ArrayList<Map<String, String>>) claims.get("roles");
+		  		Collection<GrantedAuthority> autorities = new ArrayList<>();
 
-		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username,
-				null, autorities);
-		SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+		  		roles.forEach(r -> {
+		  			autorities.add(new SimpleGrantedAuthority(r.get("authority")));
+		  		});
 
-		filterChain.doFilter(request, response);
+		  		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username,
+		  				null, autorities);
+		  		SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+
+		  		filterChain.doFilter(request, response);
+		       
+		      }
+		
+		
+		
+		
+
 
 	}
 

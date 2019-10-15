@@ -26,12 +26,12 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 			throws IOException, ServletException {
 
 		
-		      response.addHeader("Access-Control-Allow-Origin", "*");
-		      response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
-		      response.addHeader("Access-Control-Max-Age", "3600");
-		      response.addHeader("Access-Control-Allow-Headers","Origin ,Accept,X-requested-with,Content-Type" +"Access-Control-Request-Method,"
-		      +"Access-Control-Request-Headers,"+"Authorization" );  
-		      response.addHeader("Access-control-expose-headers","Access-Control-Allow-Origin,"+"Access-Control-Credentials,Authorization");
+//		      response.addHeader("Access-Control-Allow-Origin", "*");
+//		      response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+//		      response.addHeader("Access-Control-Max-Age", "3600");
+//		      response.addHeader("Access-Control-Allow-Headers","Origin ,Accept,X-requested-with,Content-Type" +"Access-Control-Request-Method,"
+//		      +"Access-Control-Request-Headers,"+"Authorization" );  
+//		      response.addHeader("Access-control-expose-headers","Access-Control-Allow-Origin,"+"Access-Control-Credentials,Authorization");
 		
 		   if (request.getMethod().equals("OPTIONS")) {
 		          response.setStatus(HttpServletResponse.SC_OK);

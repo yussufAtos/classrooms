@@ -21,7 +21,7 @@ import com.classrooms.model.Matiere;
 import com.classrooms.model.Professeur;
 import com.classrooms.model.ProfesseurResult;
 import com.classrooms.service.EcoleService;
-@CrossOrigin("http://localhost:4200")
+//@CrossOrigin("http://localhost:4200")
 @RestController
 public class EcoleController {
 

@@ -153,13 +153,13 @@ public class EcoleController {
 	
 	@PostMapping(value = "/create")
 	public void createUser(@RequestBody UserApp userApp) {	
-		//UserApp userApp = new UserApp("KAL", "KAL", 25);
+	UserApp user = new UserApp("salim", "salim", 25);
 		System.out.println("create UserApp : "+userApp);
 		Role r1 = new Role("admin");
 		Role r2 = new Role("user");
-		userApp.getRoles().add(r1);
-		userApp.getRoles().add(r2);
-		userService.save(userApp);
+		user.getRoles().add(r1);
+		user.getRoles().add(r2);
+		userService.save(user);
 
 	}
 

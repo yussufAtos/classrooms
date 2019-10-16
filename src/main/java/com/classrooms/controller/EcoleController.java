@@ -20,7 +20,10 @@ import com.classrooms.model.Eleve;
 import com.classrooms.model.Matiere;
 import com.classrooms.model.Professeur;
 import com.classrooms.model.ProfesseurResult;
+import com.classrooms.model.Role;
+import com.classrooms.model.UserApp;
 import com.classrooms.service.EcoleService;
+import com.classrooms.service.UserService;
 //@CrossOrigin("http://localhost:4200")
 @RestController
 public class EcoleController {
@@ -30,7 +33,9 @@ public class EcoleController {
 
 	@Autowired
 	private ClasseDao classeDao;
-
+	
+	@Autowired
+	private UserService userService;
 	// classrooms
 	@GetMapping(value = "/rooms")
 	public List<Classe> getRooms() {
@@ -144,6 +149,18 @@ public class EcoleController {
 	@PostMapping("/upload")
 	public Matiere singleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
 		return ecoleService.uploadFile(file);
+	}
+	
+	@PostMapping(value = "/create")
+	public void createUser(@RequestBody UserApp userApp) {	
+		//UserApp userApp = new UserApp("KAL", "KAL", 25);
+		System.out.println("create UserApp : "+userApp);
+		Role r1 = new Role("admin");
+		Role r2 = new Role("user");
+		userApp.getRoles().add(r1);
+		userApp.getRoles().add(r2);
+		userService.save(userApp);
+
 	}
 
 	// call other microserviuce started on port 9095
